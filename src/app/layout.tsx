@@ -1,11 +1,9 @@
+'use client';
+
 import './globals.css';
 
-import { Roboto } from '@next/font/google';
-
-const roboto = Roboto({
-	subsets: ['latin'],
-	weight: ['100', '300', '400', '500', '700', '900']
-});
+import { Box } from '@mui/material';
+import { Navbar } from './components/Navbar';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
@@ -15,7 +13,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
 			<head />
-			<body className={roboto.className}>{children}</body>
+			<body>
+				<Navbar />
+				<Box sx={{ flexFlow: 1 }}>{children}</Box>
+			</body>
 		</html>
 	);
 }
