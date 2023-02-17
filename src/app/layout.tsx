@@ -3,19 +3,28 @@
 import './globals.css';
 
 import { Box } from '@mui/material';
-import { Navbar } from './components/Navbar';
+import { ThemeConfig } from '../themes/theme.config';
+import { Navbar, Sidebar } from './components';
+import { UIProvider } from './context/ui';
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+type RootLayoutProps = {
+	children: React.ReactNode;
+};
+
+export default function RootLayout({ children }: RootLayoutProps): React.ReactElement {
 	return (
 		<html lang="en">
-			{/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
 			<head />
 			<body>
-				<Navbar />
-				<Box sx={{ flexFlow: 1 }}>{children}</Box>
+				<UIProvider>
+					<ThemeConfig>
+						<>
+							<Navbar />
+							<Sidebar />
+							<Box sx={{ flexFlow: 1 }}>{children}</Box>
+						</>
+					</ThemeConfig>
+				</UIProvider>
 			</body>
 		</html>
 	);

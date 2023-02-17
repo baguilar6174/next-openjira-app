@@ -19,22 +19,10 @@ export const darkTheme = createTheme({
 		mode: 'dark',
 		background: {
 			default: themePalette.BG
-		},
-		primary: {
-			main: themePalette.LIME
 		}
 	},
 	typography: {
 		fontFamily: roboto.style.fontFamily
 	},
-	components: {
-		MuiAppBar: {
-			defaultProps: {},
-			styleOverrides: {
-				root: {
-					backgroundColor: '#4a148c'
-				}
-			}
-		}
-	}
+	components: {}
 });
