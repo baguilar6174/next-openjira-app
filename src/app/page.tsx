@@ -1,7 +1,7 @@
 'use client';
 
 import { Card, CardHeader, Grid } from '@mui/material';
-import { EntriesList } from './components';
+import { AddEntry, EntriesList } from './components';
 
 export default function Home(): React.ReactElement {
 	return (
@@ -10,6 +10,7 @@ export default function Home(): React.ReactElement {
 				<Grid item xs={12} sm={4}>
 					<Card sx={{ height: 'calc(100vh - 100px)' }}>
 						<CardHeader title="Pending" />
+						<AddEntry />
 						<EntriesList status="pending" />
 					</Card>
 				</Grid>
