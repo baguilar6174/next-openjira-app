@@ -47,6 +47,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Open Jira App
 
+<table>
+  <tr>
+    <td align="center" valign="center"><img src="./media/1.png" width="80%"></td>
+  </tr>
+ </table>
+
 ## Stay in touch
 
 - Website - [www.bryan-aguilar.com](https://www.bryan-aguilar.com/)

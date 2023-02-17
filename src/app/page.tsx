@@ -1,12 +1,31 @@
 'use client';
 
+import { Card, CardHeader, Grid } from '@mui/material';
+import { EntriesList } from './components';
+
 export default function Home(): React.ReactElement {
 	return (
 		<main>
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore, in illo! Tempore laboriosam aut, error quis
-			distinctio repellat et veniam iusto corrupti aliquam adipisci? Vel odio dolore blanditiis officiis? Quidem a
-			quaerat beatae atque fugiat. Atque blanditiis libero dolorum similique? Deserunt, voluptatem? Quo beatae,
-			perferendis voluptas inventore esse eos hic?
+			<Grid container spacing={2}>
+				<Grid item xs={12} sm={4}>
+					<Card sx={{ height: 'calc(100vh - 100px)' }}>
+						<CardHeader title="Pending" />
+						<EntriesList status="pending" />
+					</Card>
+				</Grid>
+				<Grid item xs={12} sm={4}>
+					<Card sx={{ height: 'calc(100vh - 100px)' }}>
+						<CardHeader title="In progress" />
+						<EntriesList status="in-progress" />
+					</Card>
+				</Grid>
+				<Grid item xs={12} sm={4}>
+					<Card sx={{ height: 'calc(100vh - 100px)' }}>
+						<CardHeader title="Done" />
+						<EntriesList status="done" />
+					</Card>
+				</Grid>
+			</Grid>
 		</main>
 	);
 }
