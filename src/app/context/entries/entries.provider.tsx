@@ -38,5 +38,18 @@ type EntriesProviderProps = {
 export const EntriesProvider = ({ children }: EntriesProviderProps): React.ReactElement => {
 	const [state, dispatch] = useReducer(entriesReducer, INITIAL_STATE);
 
-	return <EntriesContext.Provider value={{ ...state }}>{children}</EntriesContext.Provider>;
+	return <EntriesContext.Provider value={{ ...state, addEntry }}>{children}</EntriesContext.Provider>;
+
+	function addEntry(description: string) {
+		const entry: Entry = {
+			_id: uuid(),
+			description,
+			status: 'pending',
+			createdAt: Date.now()
+		};
+		dispatch({
+			type: '[Entries] - Add entry',
+			payload: entry
+		});
+	}
 };

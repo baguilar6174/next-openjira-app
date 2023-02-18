@@ -1,17 +1,19 @@
 import CancelIcon from '@mui/icons-material/Cancel';
 import DataSaverOnIcon from '@mui/icons-material/DataSaverOn';
 import { Box, Button, TextField } from '@mui/material';
-import { useState } from 'react';
-import { v4 as uuid } from 'uuid';
+import { useContext, useState } from 'react';
+import { EntriesContext } from '../context/entries/entries.context';
+import { UIContext } from '../context/ui/ui.context';
 import { useForm } from '../hooks/useForm';
-import { Entry } from '../interfaces';
 
 const initialForm = {
 	task: ''
 };
 
 export const AddEntry: React.FC = (): React.ReactElement => {
-	const [isAdding, setIsAdding] = useState<boolean>(false);
+	const { addEntry } = useContext(EntriesContext);
+	const { isAddingEntry, setIsAddingEntry } = useContext(UIContext);
+
 	const [isTouched, setIsTouched] = useState<boolean>(false);
 
 	const { form, onInputChange, onResetForm } = useForm(initialForm);
@@ -19,7 +21,7 @@ export const AddEntry: React.FC = (): React.ReactElement => {
 
 	return (
 		<Box sx={{ marginBottom: 2, paddingX: 2 }}>
-			{isAdding ? (
+			{isAddingEntry ? (
 				<>
 					<TextField
 						fullWidth
@@ -53,22 +55,18 @@ export const AddEntry: React.FC = (): React.ReactElement => {
 	);
 
 	function hideForm(): void {
-		setIsAdding(false);
+		setIsAddingEntry(false);
 	}
 
 	function showForm(): void {
-		setIsAdding(true);
+		setIsAddingEntry(true);
 	}
 
 	function save(): void {
 		if (task.length === 0) return;
-		const entry: Entry = {
-			_id: uuid(),
-			description: task,
-			status: 'pending',
-			createdAt: new Date().getTime()
-		};
-		console.log('todo', entry);
+		addEntry(task);
+		setIsAddingEntry(false);
+		setIsTouched(false);
 		onResetForm();
 	}
 };
