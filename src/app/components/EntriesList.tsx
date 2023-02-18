@@ -1,5 +1,5 @@
 import { List, Paper } from '@mui/material';
-import { useContext, useMemo } from 'react';
+import { DragEvent, useContext, useMemo } from 'react';
 
 import { EntryCard } from '.';
 import { EntriesContext } from '../context/entries/entries.context';
@@ -16,7 +16,7 @@ export const EntriesList: React.FC<EntriesListProps> = ({ status }): React.React
 		[entries]
 	);
 	return (
-		<div>
+		<div onDrop={onDrop} onDragOver={allowDrop}>
 			<Paper sx={{ height: 'calc(100vh - 250px)', overflowY: 'scroll', backgroundColor: 'transparent', padding: 2 }}>
 				<List sx={{ opacity: 1 }}>
 					{entriesByStatus.map(
@@ -28,4 +28,14 @@ export const EntriesList: React.FC<EntriesListProps> = ({ status }): React.React
 			</Paper>
 		</div>
 	);
+
+	function onDrop(event: DragEvent<HTMLDivElement>): void {
+		event.preventDefault();
+		const id = event.dataTransfer.getData('entry');
+		console.log(id);
+	}
+
+	function allowDrop(event: DragEvent<HTMLDivElement>) {
+		event.preventDefault();
+	}
 };
