@@ -52,6 +52,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
     <td align="center" valign="center"><img src="./media/1.png" width="80%"></td>
     <td align="center" valign="center"><img src="./media/2.png" width="100%"></td>
   </tr>
+  <tr>
+    <td align="center" valign="center"><img src="./media/3.png" width="100%"></td>
+    <td align="center" valign="center"><img src="./media/4.png" width="100%"></td>
+  </tr>
  </table>
 
 ## Stay in touch

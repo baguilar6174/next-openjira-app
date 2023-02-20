@@ -38,9 +38,9 @@ type EntriesProviderProps = {
 export const EntriesProvider = ({ children }: EntriesProviderProps): React.ReactElement => {
 	const [state, dispatch] = useReducer(entriesReducer, INITIAL_STATE);
 
-	return <EntriesContext.Provider value={{ ...state, addEntry }}>{children}</EntriesContext.Provider>;
+	return <EntriesContext.Provider value={{ ...state, addEntry, updateEntry }}>{children}</EntriesContext.Provider>;
 
-	function addEntry(description: string) {
+	function addEntry(description: string): void {
 		const entry: Entry = {
 			_id: uuid(),
 			description,
@@ -49,6 +49,13 @@ export const EntriesProvider = ({ children }: EntriesProviderProps): React.React
 		};
 		dispatch({
 			type: '[Entries] - Add entry',
+			payload: entry
+		});
+	}
+
+	function updateEntry(entry: Entry): void {
+		dispatch({
+			type: '[Entries] - Update entry',
 			payload: entry
 		});
 	}
