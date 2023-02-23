@@ -20,6 +20,14 @@ yarn
 
 Step 3:
 
+Configure and start Database
+
+```
+docker-compose up -d
+```
+
+Step 4:
+
 Runs the app in the development mode
 
 ```
