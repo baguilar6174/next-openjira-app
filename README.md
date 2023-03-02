@@ -26,7 +26,19 @@ Configure and start Database
 docker-compose up -d
 ```
 
+**Mongo DB URL Local**: `mongodb://localhost:27017/jiradb`
+
 Step 4:
+
+Configure environment variables, you need to rename **.env.template** to **.env** file
+
+Step 5 (optional):
+
+You can creata fake data using the endpoint:
+
+GET: [http://localhost:3000/api/seed](http://localhost:3000/api/seed)
+
+Step 6:
 
 Runs the app in the development mode
 
@@ -45,6 +57,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - Typescript
 - Material UI
 - Context API
+- MongoDB & Mongoose
+- Handle Mongoose schema
+- Next JS Restfull API
 
 ### What I learned
 

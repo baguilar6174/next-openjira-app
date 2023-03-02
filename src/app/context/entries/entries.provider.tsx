@@ -9,26 +9,7 @@ export interface EntriesState {
 }
 
 const INITIAL_STATE: EntriesState = {
-	entries: [
-		{
-			_id: uuid(),
-			description: 'New task',
-			status: 'pending',
-			createdAt: Date.now()
-		},
-		{
-			_id: uuid(),
-			description: 'New task in progress',
-			status: 'in-progress',
-			createdAt: Date.now() - 10000
-		},
-		{
-			_id: uuid(),
-			description: 'New task pending',
-			status: 'pending',
-			createdAt: Date.now() - 100000
-		}
-	]
+	entries: []
 };
 
 type EntriesProviderProps = {
