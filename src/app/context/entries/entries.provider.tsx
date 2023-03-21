@@ -1,5 +1,4 @@
 import { useEffect, useReducer } from 'react';
-import { v4 as uuid } from 'uuid';
 
 import { EntriesContext, entriesReducer } from '.';
 import entriesApi from '../../../database/api';
@@ -26,17 +25,16 @@ export const EntriesProvider = ({ children }: EntriesProviderProps): React.React
 
 	return <EntriesContext.Provider value={{ ...state, addEntry, updateEntry }}>{children}</EntriesContext.Provider>;
 
-	function addEntry(description: string): void {
-		const entry: Entry = {
-			_id: uuid(),
-			description,
-			status: 'pending',
-			createdAt: Date.now()
-		};
-		dispatch({
-			type: '[Entries] - Add entry',
-			payload: entry
-		});
+	async function addEntry(description: string): Promise<void> {
+		try {
+			const { data } = await entriesApi.post<Entry>('/entries', { description });
+			dispatch({
+				type: '[Entries] - Add entry',
+				payload: data
+			});
+		} catch (error) {
+			console.log(error);
+		}
 	}
 
 	function updateEntry(entry: Entry): void {
@@ -47,10 +45,14 @@ export const EntriesProvider = ({ children }: EntriesProviderProps): React.React
 	}
 
 	async function refreshEntries(): Promise<void> {
-		const { data } = await entriesApi.get<Entry[]>('/entries');
-		dispatch({
-			type: '[Entries] - Refresh data',
-			payload: data
-		});
+		try {
+			const { data } = await entriesApi.get<Entry[]>('/entries');
+			dispatch({
+				type: '[Entries] - Refresh data',
+				payload: data
+			});
+		} catch (error) {
+			console.log(error);
+		}
 	}
 };
