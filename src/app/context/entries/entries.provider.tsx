@@ -37,11 +37,16 @@ export const EntriesProvider = ({ children }: EntriesProviderProps): React.React
 		}
 	}
 
-	function updateEntry(entry: Entry): void {
-		dispatch({
-			type: '[Entries] - Update entry',
-			payload: entry
-		});
+	async function updateEntry(entry: Entry): Promise<void> {
+		try {
+			const { data } = await entriesApi.put<Entry>(`/entries/${entry._id}`, entry);
+			dispatch({
+				type: '[Entries] - Update entry',
+				payload: data
+			});
+		} catch (error) {
+			console.log(error);
+		}
 	}
 
 	async function refreshEntries(): Promise<void> {
