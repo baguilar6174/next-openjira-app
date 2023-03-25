@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import { DragEvent, useContext } from 'react';
 import { UIContext } from '../context/ui/ui.context';
 import { Entry } from '../interfaces';
+import { getDateFormat } from '../utils/date.util';
 
 type EntryCardProps = {
 	entry: Entry;
@@ -25,7 +26,7 @@ export const EntryCard: React.FC<EntryCardProps> = ({ entry }): React.ReactEleme
 					<Typography sx={{ whiteSpace: 'pre-line' }}>{entry.description}</Typography>
 				</CardContent>
 				<CardActions sx={{ display: 'flex', justifyContent: 'end', paddingRight: 2 }}>
-					<Typography variant="body2">hace 30 min</Typography>
+					<Typography variant="body2">{getDateFormat(entry.createdAt)}</Typography>
 				</CardActions>
 			</CardActionArea>
 		</Card>

@@ -23,6 +23,7 @@ import entriesApi from '../../../database/api';
 import { EntriesContext } from '../../context/entries';
 
 import { Entry, EntryStatus } from '../../interfaces';
+import { getDateFormat } from '../../utils/date.util';
 
 const validStatus: EntryStatus[] = ['pending', 'in-progress', 'done'];
 
@@ -78,7 +79,10 @@ export default function EntryPage(props: PageProps) {
 			<Grid container justifyContent="center" sx={{ marginTop: 2 }}>
 				<Grid item xs={12} sm={8} md={6}>
 					<Card>
-						<CardHeader title={`Entry: ${inputValue}`} subheader={`Created ${entry?.createdAt} ago`} />
+						<CardHeader
+							title={`Entry: ${inputValue}`}
+							subheader={`Created ${entry ? getDateFormat(entry.createdAt) : '--'} ago`}
+						/>
 						<CardContent>
 							<TextField
 								sx={{ marginY: 2 }}
