@@ -60,6 +60,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - MongoDB & Mongoose
 - Handle Mongoose schema
 - Next JS Restfull API
+- Server Side Rendering
 
 ### What I learned
 
