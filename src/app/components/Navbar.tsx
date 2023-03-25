@@ -1,5 +1,6 @@
 import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
+import Link from 'next/link';
 import { useContext } from 'react';
 import { UIContext } from '../context/ui';
 
@@ -12,7 +13,9 @@ export const Navbar = (): React.ReactElement => {
 				<IconButton onClick={openSidebar}>
 					<MenuIcon />
 				</IconButton>
-				<Typography variant="h6">Open Jira</Typography>
+				<Link href="/">
+					<Typography variant="h6">Open Jira</Typography>
+				</Link>
 			</Toolbar>
 		</AppBar>
 	);
