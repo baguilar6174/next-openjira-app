@@ -129,6 +129,6 @@ export default function EntryPage(props: PageProps) {
 			status,
 			description: inputValue
 		};
-		updateEntry(newEntry);
+		updateEntry(newEntry, true);
 	}
 }

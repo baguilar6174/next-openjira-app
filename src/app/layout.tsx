@@ -3,6 +3,7 @@
 import './globals.css';
 
 import { Box } from '@mui/material';
+import { SnackbarProvider } from 'notistack';
 
 import { ThemeConfig } from '../themes/theme.config';
 import { Navbar, Sidebar } from './components';
@@ -18,17 +19,19 @@ export default function RootLayout({ children }: RootLayoutProps): React.ReactEl
 		<html lang="en">
 			<head />
 			<body>
-				<EntriesProvider>
-					<UIProvider>
-						<ThemeConfig>
-							<>
-								<Navbar />
-								<Sidebar />
-								<Box sx={{ flexFlow: 1 }}>{children}</Box>
-							</>
-						</ThemeConfig>
-					</UIProvider>
-				</EntriesProvider>
+				<SnackbarProvider maxSnack={3}>
+					<EntriesProvider>
+						<UIProvider>
+							<ThemeConfig>
+								<>
+									<Navbar />
+									<Sidebar />
+									<Box sx={{ flexFlow: 1 }}>{children}</Box>
+								</>
+							</ThemeConfig>
+						</UIProvider>
+					</EntriesProvider>
+				</SnackbarProvider>
 			</body>
 		</html>
 	);
